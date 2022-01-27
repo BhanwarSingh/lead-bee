@@ -1,0 +1,44 @@
+<%= form_for @lead, url: '/leads', method: 'post' do |form| %>
+  <% if lead.errors.any? %>
+    <!-- div id="error_explanation">
+      <h2><%= pluralize(lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
+
+      <ul>
+      <% lead.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div -->
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: 'sr-only' %>
+		<%= form.text_field :name, id: :lead_name, placeholder: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, class: 'sr-only' %>
+    <%= form.text_field :email, id: :lead_email, placeholder: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :age, class: 'sr-only' %>
+    <%= form.number_field :age, id: :lead_age, placeholder: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :job, class: 'sr-only' %>
+    <%= form.text_field :job, id: :lead_job, placeholder: true, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit t('section.lead.btn_submit'), class: 'btn btn-primary btn-block' %>
+  </div>
+
+	<% if flash[:notice] %>
+		<div class="alert alert-success">
+			<h4>Obrigado pelo cadastro!</h4>
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+<% end %>
